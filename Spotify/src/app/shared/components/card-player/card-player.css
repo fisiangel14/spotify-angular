@@ -1,0 +1,30 @@
+.card-player {
+  background-color: var(--color-2);
+  border-radius: var(--border-radius-2);
+  box-shadow: var(--shadow-2);
+  padding: 1rem;
+  cursor: pointer;
+  transition: transform .2s ease;
+}
+
+.card-player:hover {
+  transform: scale(1.05);
+}
+
+.card-player__img {
+  width: 100%;
+  border-radius: var(--border-radius-1);
+  margin-bottom: .5rem;
+}
+
+.card-player__title {
+  margin: 0;
+  font-size: var(--font-size-2);
+  font-weight: 600;
+}
+
+.card-player__subtitle {
+  margin: 0;
+  font-size: var(--font-size-1);
+  opacity: .7;
+}

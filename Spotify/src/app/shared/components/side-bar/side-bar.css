@@ -1,6 +1,6 @@
 /* Esto hace que la barra quede fija en la izquierda y ocupe toda la pantalla de arriba a abajo. */
 .side-bar {
-    width: 15.5rem;       /* ancho fijo de la barra */
+    width: 100%;       /* ancho fijo de la barra */
     /* height: 100vh;        ocupa todo el alto de la ventana tampoco va xd */
     /* position: fixed;      queda pegada al lado izquierdo  ya no va lo hace el layout.css grid */
     top: 0;

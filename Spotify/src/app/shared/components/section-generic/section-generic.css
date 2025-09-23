@@ -1,0 +1,15 @@
+.section-generic {
+  margin-bottom: 2rem;
+}
+
+.section-generic__title {
+  font-size: var(--font-size-3);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.section-generic__content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}

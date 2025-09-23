@@ -20,6 +20,10 @@
   --animation-1: 200ms; /* Duración estándar para animaciones */
 }
 
+* {
+  box-sizing: border-box;
+}
+
 
 html,
 body {
