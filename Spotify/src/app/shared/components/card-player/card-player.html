@@ -1,7 +1,14 @@
-<div class="card-player">
+<div class="card-player" [ngClass]="mode">
   <img [src]="track.cover" alt="cover" class="card-player__img">
   <div class="card-player__info">
     <h3 class="card-player__title">{{ track.name }}</h3>
-    <p class="card-player__subtitle">{{ track .album }}</p>
+    <p class="card-player__subtitle">{{ track.album }}</p>
   </div>
+
+  <!-- Diseño "big" (lo dejas comentado por ahora) -->
+  <!--
+  <div class="card-player__big">
+    ...
+  </div>
+  -->
 </div>

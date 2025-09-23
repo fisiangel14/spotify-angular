@@ -1,4 +1,45 @@
-.section-generic {
+.player--list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.player--list.card-small {
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* 👈 más compacto */
+}
+
+.player--list.card-big {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 👈 menos ancho que antes */
+}
+
+/* .section--generic {
+  padding: 1rem 0;
+}
+
+.section--generic__title {
+  font-size: var(--font-size-3);
+  margin-bottom: 1rem;
+}
+
+.section--generic__player--zone .player--list {
+  display: grid;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.section--generic__player--zone .player--list.card-small {
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.section--generic__player--zone .player--list.card-big {
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+} */
+
+/* .section-generic {
   margin-bottom: 2rem;
 }
 
@@ -12,4 +53,4 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 1rem;
-}
+} */
