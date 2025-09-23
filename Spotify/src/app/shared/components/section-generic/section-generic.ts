@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule, NgClass } from '@angular/common';
+import { TrackModel } from '@core/models/tracks.model'; 
 
 @Component({
   selector: 'app-section-generic',
@@ -10,5 +11,5 @@ import { CommonModule, NgClass } from '@angular/common';
 export class SectionGeneric {
   @Input() title: string = '';
   @Input() mode: 'small' | 'big' = 'big';
-  @Input() dataTracks: Array<any> = [];
+  @Input() dataTracks: TrackModel[] = [];
 }

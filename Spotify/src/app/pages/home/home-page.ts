@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home-page',
-  imports: [CommonModule, SectionGeneric, CardPlayer],
+  imports: [],
   templateUrl: './home-page.html',
   styleUrl: './home-page.css'
 })
