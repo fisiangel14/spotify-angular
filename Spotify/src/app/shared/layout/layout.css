@@ -27,6 +27,9 @@
 .main {
   grid-area: main;
   overflow-y: auto;
+   /* Gradiente estilo doc */
+  background: rgb(23,23,26);
+  background: linear-gradient(90deg, rgba(23,23,26,1) 44%, rgba(24,24,24,1));
 }
 
 .main .container {
