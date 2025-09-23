@@ -1,0 +1,58 @@
+/* Esto hace que la barra quede fija en la izquierda y ocupe toda la pantalla de arriba a abajo. */
+.side-bar {
+    width: 15.5rem;       /* ancho fijo de la barra */
+    /* height: 100vh;        ocupa todo el alto de la ventana tampoco va xd */
+    /* position: fixed;      queda pegada al lado izquierdo  ya no va lo hace el layout.css grid */
+    top: 0;
+    left: 0;
+    padding: .5rem 1rem;
+    /* background-color: red;  (comentado, era para debug) */
+}
+
+/* Estiliza las listas internas del menú. Sin viñetas (list-style:none), sin márgenes ni padding. */
+.side-bar__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    opacity: .8;
+}
+
+/* Define estilo para etiquetas de las listas (ej. “Menú”, “Biblioteca”). */
+.side-bar__list .list-label {
+    font-size: 90%;
+    font-weight: 500;
+}
+
+/* Cada ítem del menú será un flexbox para alinear icono + texto en fila. */
+.side-bar__list .list-wrapper-item {
+    font-size: var(--font-size-1);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+/* Si usas iconos con la clase .uil (ej. librería Unicons), se ajusta su tamaño y margen. */
+.side-bar__list .list-wrapper-item .uil {
+    font-size: var(--font-size-3);
+    padding-right: .5rem;
+}
+
+/*Define separadores visuales dentro del sidebar.  */
+.side-bar__separator {
+    margin: 1rem 0;
+}
+
+.side-bar__separator.line-separator {
+    border-bottom: solid 1px var(--color-2);
+}
+
+/* Estilos especiales si usas una lista con la clase list-three. */
+.side-bar__list.list-three .list-wrapper-item {
+    padding: .25rem 0;
+}
+
+/* Convierte los ítems de lista en elementos clicables. */
+.side-bar__list li {
+    cursor: pointer;
+}
