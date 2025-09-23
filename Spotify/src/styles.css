@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --color-1: #1DB954;       /* Verde principal (Spotify) */
+  --color-2: #323232;       /* Gris oscuro */
+  --color-3: #000000;       /* Negro */
+  --color-4: #FFFFFF;       /* Blanco */
+  --color-5: #181818;       /* Fondo casi negro */
+
+  --font-size-1: 1rem;      /* Tamaño texto base (16px aprox) */
+  --font-size-2: 1.2rem;    /* Texto un poco más grande */
+  --font-size-3: 1.8rem;    /* Texto más grande */
+
+  --shadow-1: rgb(0 0 0 / 35%) 0px 8px 24px;   /* Sombra oscura difusa */
+  --shadow-2: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; /* Sombra más suave */
+
+  --border-radius-1: .25rem; /* Bordes redondeados pequeños */
+  --border-radius-2: .5rem;  /* Bordes redondeados medianos */
+
+  --font-family-1: 'Poppins', sans-serif; /* Fuente global */
+  --animation-1: 200ms; /* Duración estándar para animaciones */
+}
+
+
+html,
+body {
+  margin: 0;                         /* Quita los márgenes por defecto del navegador */
+  padding: 0;                        /* Quita el relleno por defecto */
+  background-color: var(--color-3);  /* Fondo negro (usa la variable global) */
+  font-family: var(--font-family-1); /* Fuente 'Poppins' definida en :root */
+  font-size: var(--font-size-1);     /* Tamaño base del texto (16px aprox) */
+  color: var(--color-4);             /* Color de texto blanco */
+}
+
+input,
+button {
+  cursor: pointer;                   /* El cursor cambia a "mano" al pasar encima */
+  font-family: var(--font-family-1); /* Aplica la misma fuente que en todo el sitio */
+}
+
+button:disabled {
+  opacity: .5; /* Botón apagado cuando está deshabilitado */
+}
