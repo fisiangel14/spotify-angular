@@ -7,14 +7,8 @@ import { SectionGeneric } from '@shared/components/section-generic/section-gener
   styleUrl: './tracks-page.css'
 })
 export class TracksPage {
-mockTracksList = [ {
-name: 'BEBE (Oficial)'
-    },
-    {
-name: 'BEBE (Oficial)'
-    },
-    {
-name: 'BEBE (Oficial)'
-    }
-  ]
-}
+mockTracksList = [ 
+ { name: 'BEBE (Oficial)'},
+  { name: 'BEBE (Oficial)' },
+  { name: 'BEBE (Oficial)' }
+];}
