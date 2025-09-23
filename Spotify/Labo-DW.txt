@@ -100,8 +100,7 @@ app.html = lo que realmente ves en pantalla (el contenedor principal de la app).
 
  crear componentes de prueba
  ng g c Example
-
- ng g c pages/auth/auth-page --standalone --inline-style=false --inline-template=false --flat
+ 
  ng g c pages/home/home-page --standalone --inline-style=false --inline-template=false --flat
  ng g c pages/favorites/favorite-page --standalone --inline-style=false --inline-template=false --flat
  ng g c pages/history/history-page --standalone --inline-style=false --inline-template=false --flat   
