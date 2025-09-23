@@ -6,22 +6,27 @@ export const routes: Routes = [
   {
     path: 'auth',
     loadComponent: () =>
-      import('./pages/auth/login-page/login-page').then(m => m.LoginPage)
+      import('./pages/auth/auth-page').then(m => m.AuthPage)
+  },
+  {
+    path: 'favorites',
+    loadComponent: () =>
+      import('./pages/favorites/favorite-page').then(m => m.FavoritePage)
   },
   {
     path: 'home',
     loadComponent: () =>
-      import('./pages/home/home-page/home-page').then(m => m.HomePage)
+      import('./pages/home/home-page').then(m => m.HomePage)
   },
   {
     path: 'history',
     loadComponent: () =>
-      import('./pages/history/history-page/history-page').then(m => m.HistoryPage)
+      import('./pages/history/history-page').then(m => m.HistoryPage)
   },
   {
     path: 'tracks',
     loadComponent: () =>
-      import('./pages/tracks/tracks-page/tracks-page').then(m => m.TracksPage)
+      import('./pages/tracks/tracks-page').then(m => m.TracksPage)
   },
 
   { path: '**', redirectTo: 'auth' }
