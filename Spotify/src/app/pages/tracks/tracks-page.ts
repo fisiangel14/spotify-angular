@@ -11,6 +11,7 @@ import * as dataRaw from '../../../app/data/tracks.json';
 export class TracksPage {
 mockTracksList: TrackModel[]  = [ 
 ];
+
 ngOnInit(): void {
     const { data }: any = (dataRaw as any).default;
     this.mockTracksList = data;
