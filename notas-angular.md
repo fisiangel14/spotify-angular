@@ -37,6 +37,26 @@ let edad: number = 20;
 
 ---
 
+* Agrega fonts y iconos
+
+* Usar dataset para datos tpo json
+de aqui saco la data q usare en la app
+
+“compilerOptions”: {
+“resolveJsonModule”: true,
+“baseUrl”: “./”,
+agregasmos esto para evitar pbugs con los json
+
+---
+
+## Branding
+Agregamos los estilos en style.css
+Se usaran variables css para todo el proyecto
+
+---
+
+## Scaffolding o estructuracion
+
 Verificar contenido de src/app
 
 Directorio de C:\sm\spotify-angular\src\app
@@ -69,28 +89,6 @@ Segun me explico mi curso el @Component es un decorador q va includo a la Clase,
 y realaciona la etiquera, template, estilo, y import van otros components
 
 Aparte en la parte de clase va la logica en Typescript
-
----
-
-* Agrega fonts y iconos
-
-* Usar dataset para datos tpo json
-de aqui saco la data q usare en la app
-
-“compilerOptions”: {
-“resolveJsonModule”: true,
-“baseUrl”: “./”,
-agregasmos esto para evitar pbugs con los json
-
----
-
-## Branding
-Agregamos los estilos en style.css
-Se usaran variables css para todo el proyecto
-
----
-
-
 
 
 
