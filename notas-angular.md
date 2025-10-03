@@ -115,12 +115,14 @@ app.html = lo que realmente ves en pantalla (el contenedor principal de la app).
 
 ---
 
+## Componentes
+
 cree 1 carpeta pages y para cada componente luego tanb los cree
-ng generate component pages/history --standalone
+ * ng generate component pages/history --standalone
 ya tanbn cree las rutas con loadComponent
 
 crear componentes de prueba
-ng g c Example
+ng g c ruta/ejemplo                                                                                            
 
 ng g c pages/home/home-page --standalone --inline-style=false --inline-template=false --flat
 ng g c pages/favorites/favorite-page --standalone --inline-style=false --inline-template=false --flat
@@ -146,15 +148,22 @@ path: '',
 component: Example
 }
 
-nos dira q hagamos un import, iniciamos el server y veremos nuestro " Hola mundo
+nos dira q hagamos un import, iniciamos el server y veremos nuestro " Hola mundo "
+
+Recorda que ya sea 1 ruta u usar 1 componente dentro de otro
+se debe importar antes.
+
+---
 
 Luego sobre la estructura
-cramos el sidebar. header player en core
-ya no cramos shared
-y los llamamos desde otro layout
+cramos el sidebar, header y  media-player en shared\components
 
-Luego el hace lazyload pero lo haremos como loadComponent y sin modulos
-el crea 1 modulo q en si esta vacio y luego dentro de este 1 componente
+Luego el hace lazyload pero lo haremos como loadComponent y sin modulos, asi:
+
+        path: '',
+        loadComponent: () => import('./pages/home/home').then(m => m.Home)
+
+---
 
 podemos agregar alias para las rutas
 
