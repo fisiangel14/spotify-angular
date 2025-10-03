@@ -32,43 +32,49 @@ ng s --host=0.0.0.0 --port=4100
 ---
 
 //Tipos de datos en Typescript
+let nombre: string = 'Spotify';
+let edad: number = 20;
+
+---
 
 Verificar contenido de src/app
 
-Directorio de D:\proyectos-2025\sm\Spotify\src\app
+Directorio de C:\sm\spotify-angular\src\app
 
-14/09/2025  18:35    <DIR>          .
-14/09/2025  18:35    <DIR>          ..
-14/09/2025  18:35               412 app.config.ts
-14/09/2025  18:35                 0 app.css
-14/09/2025  18:35            20,464 app.html
-14/09/2025  18:35                80 app.routes.ts
-14/09/2025  18:35               688 app.spec.ts
-14/09/2025  18:35               301 app.ts
+03/10/2025  10:25               412 app.config.ts
+03/10/2025  10:25                 0 app.css               *CSS*
+03/10/2025  11:35                87 app.html             *HTML*
+03/10/2025  10:25                80 app.routes.ts         *Rutas*
+03/10/2025  10:25               696 app.spec.ts
+03/10/2025  11:36               309 app.ts                *TypeScript*
+03/10/2025  11:37    <DIR>          data
 
 Usamos app.ts (antes era app.component.ts)
 
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-@Component({
-selector: 'app-root',
-imports: [RouterOutlet],
-templateUrl: './app.html',
-styleUrl: './app.css'
-})
+    @Component({
+        selector: 'app-root',
+        imports: [RouterOutlet],
+        templateUrl: './app.html',
+        styleUrl: './app.css'
+    })
+
 export class App {
-protected readonly title = signal('Spotify');
+    protected readonly title = signal('Spotify');
 }
 
 Segun me explico mi curso el @Component es un decorador q va includo a la Clase,
-y realaciona la etiquera, temaplte, estilo, y import van otros components
+y realaciona la etiquera, template, estilo, y import van otros components
 
 Aparte en la parte de clase va la logica en Typescript
 
-Agrega fonts y iconos
+---
 
-Usar dataset para datos tpo json
+* Agrega fonts y iconos
+
+* Usar dataset para datos tpo json
 de aqui saco la data q usare en la app
 
 “compilerOptions”: {
@@ -76,9 +82,30 @@ de aqui saco la data q usare en la app
 “baseUrl”: “./”,
 agregasmos esto para evitar pbugs con los json
 
-Branding
+---
+
+## Branding
 Agregamos los estilos en style.css
-----------------------------------
+Se usaran variables css para todo el proyecto
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Ahora vamos con el Scaffolding: o estructura
 crear carpetas
