@@ -1,15 +1,18 @@
 # Labo angular - Clone de Spotify
 
+## Instalacion de software
 
 1. Instalar node
    - `node -v`
    - npm -v
 
-
-
 Instalar angular
 npm install -g @angular/cli
 ng v  //version de angular
+
+---
+
+## Creacion de proyecto
 
 ng new name-aplicacion  //Para crear 1 proyecto
 
@@ -26,12 +29,13 @@ ng s --port=4100
 Para compartir con cualquier host, hay q ver la ip de la maquina donde se despliega
 ng s --host=0.0.0.0 --port=4100
 
+---
+
 //Tipos de datos en Typescript
 
 Verificar contenido de src/app
 
 Directorio de D:\proyectos-2025\sm\Spotify\src\app
-
 
 14/09/2025  18:35    <DIR>          .
 14/09/2025  18:35    <DIR>          ..
@@ -171,3 +175,4 @@ Notas Angular (Clone Spotify)
 
 - Usar `ngClass` para manejar estilos dinámicos.
 - Si quiero usar rutas necesito `--routing` al crear el proyecto.
+
