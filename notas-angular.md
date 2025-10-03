@@ -65,7 +65,7 @@ Directorio de C:\sm\spotify-angular\src\app
 03/10/2025  10:25                 0 app.css               *CSS*
 03/10/2025  11:35                87 app.html             *HTML*
 03/10/2025  10:25                80 app.routes.ts         *Rutas*
-03/10/2025  10:25               696 app.spec.ts
+03/10/2025  10:25               696 app.spec.ts            *Pruebas*
 03/10/2025  11:36               309 app.ts                *TypeScript*
 03/10/2025  11:37    <DIR>          data
 
@@ -90,23 +90,9 @@ y realaciona la etiquera, template, estilo, y import van otros components
 
 Aparte en la parte de clase va la logica en Typescript
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Ahora vamos con el Scaffolding: o estructura
 crear carpetas
+src/app
 -core
 -modules
 -shared
@@ -120,11 +106,14 @@ Borrar todo el contenido generado por angular en app.html y dejar solo
 <router-outlet />
 
 esta realcionado con app.route.ts //ahi van las rutas
+
 index.html = la puerta de entrada (tiene <app-root>).
 
 main.ts = el motor que arranca Angular y dice “pinta App en <app-root>”.
 
 app.html = lo que realmente ves en pantalla (el contenedor principal de la app).
+
+---
 
 cree 1 carpeta pages y para cada componente luego tanb los cree
 ng generate component pages/history --standalone
