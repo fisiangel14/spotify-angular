@@ -2,8 +2,8 @@
 
 
 1. Instalar node
-   node -v
-   npm -v
+   - `node -v`
+   - npm -v
 
 
 
