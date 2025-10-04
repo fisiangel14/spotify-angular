@@ -1,16 +1,33 @@
 .layout {
   display: flex;
-  height: 100vh;
+  flex-direction: column; /* los hijos van en columna */
+  height: 100vh; /* ocupa toda la pantalla */
+  overflow: hidden;
 }
 
-app-sidebar {
-  width: 240px;
-  background-color: #111;
-  color: #fff;
+.main-area {
+  display: flex;
+  /* flex-direction: row; */
+  flex: 1; /*ocupa todo el espacio disponible */
+  overflow: hidden;
+}
+
+.sidebar {
+  flex: 0 0 15.5rem;
+  height: 100%;
+  /* background-color: #111;
+  color: white; */
 }
 
 .content {
   flex: 1;
-  padding: 1rem;
-  overflow-y: auto;
+  background: linear-gradient(90deg, rgba(23,23,26,1) 44%, rgba(24,24,24,1));
+  color: var(--color-4);
+  overflow-y: auto; /* solo el contenido tiene scroll */
+  position: relative;
+}
+
+.player {
+  height: 85px; /* coincide con media-player.component.css */
+  flex-shrink: 0; /* no se reduce */
 }
