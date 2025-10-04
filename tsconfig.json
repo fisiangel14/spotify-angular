@@ -15,9 +15,13 @@
     "target": "ES2022",
     "module": "preserve",
     "resolveJsonModule": true,
-    "ignoreDeprecations": "5.0",
+    // 👇 Esta línea silencia el warning de deprecación
+    // "ignoreDeprecations": "6.0",
+
+    // 👇 Y esta línea es necesaria para que Angular resuelva tus paths
     "baseUrl": "./",
     "paths": {
+      "@app/*": ["src/app/*"],
       "@core/*": [
         "src/app/core/*"
       ],

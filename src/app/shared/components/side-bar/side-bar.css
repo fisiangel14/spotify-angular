@@ -1,33 +1,52 @@
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 1rem;
+.side-bar {
+    width: 15.5rem;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 1rem 2rem;
+    /* padding: [vertical] [horizontal]; */
+    /* background-color: red; */
 }
 
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1rem 0;
+.side-bar__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    opacity: .8;
 }
 
-.sidebar li {
-  margin: 0.5rem 0;
+.side-bar__list .list-label {
+    font-size: 90%;
+    font-weight: 500;
 }
 
-.sidebar a {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  text-decoration: none;
-  color: #b3b3b3;
-  font-size: 14px;
+.side-bar__list .list-wrapper-item {
+    font-size: var(--font-size-1);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    align-content: center;
 }
 
-.sidebar a:hover {
-  color: #fff;
+.side-bar__list .list-wrapper-item .uil {
+    font-size: var(--font-size-3);
+    padding-right: .5rem;
 }
 
-.sidebar .active {
-  color: #1db954; /* verde estilo Spotify */
+.side-bar__separator {
+    margin: 2rem 0;
+}
+
+.side-bar__separator.line-separator {
+    border-bottom: solid 2px var(--color-2);
+}
+
+.side-bar__list.list-three .list-wrapper-item {
+    padding: .25rem 0;
+    font-size: 120%;
+}
+
+.side-bar__list li {
+    cursor: pointer;
 }

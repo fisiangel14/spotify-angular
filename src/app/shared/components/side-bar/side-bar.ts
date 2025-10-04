@@ -20,9 +20,9 @@ export class SideBar implements OnInit {
 
   ngOnInit(): void {
     this.mainMenu.defaultOptions = [
-      { name: 'Home', icon: 'uil uil-estate', router: ['/'] },
-      { name: 'Buscar', icon: 'uil uil-search', router: ['/tracks'] },
-      { name: 'Tu biblioteca', icon: 'uil uil-chart', router: ['/favorites'] }
+      { name: 'Home', icon: 'uil uil-estate', router: ['/', 'auth'] },
+      { name: 'Buscar', icon: 'uil uil-search', router: ['/', 'history'] },
+      { name: 'Tu biblioteca', icon: 'uil uil-chart', router: ['/','favorites'], query:{ hola: 'mundo'} }
     ];
 
     this.mainMenu.accessLink = [
@@ -31,9 +31,11 @@ export class SideBar implements OnInit {
     ];
 
     this.customOptions = [
-      { name: 'Mi Playlist ✨', router: ['/history'] },
-      { name: 'Top Perú 🇵🇪', router: ['/history'] }
+      { name: 'Mi lista °1', router: ['/'] },
+      { name: 'Mi lista °2', router: ['/'] },
+      { name: 'Mi lista °3', router: ['/'] },
+      { name: 'Mi lista °4', router: ['/']}
     ];
-  }
 
+  }
 }
