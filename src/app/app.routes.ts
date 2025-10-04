@@ -1,19 +1,17 @@
 import { Routes } from '@angular/router';
 import { Layout } from './layout/layout';
-import { Home } from '@pages/home/home';
-import { Tracks } from '@pages/tracks/tracks';
-import { Favorites } from '@pages/favorites/favorites';
-import { History } from '@pages/history/history';
 
 export const routes: Routes = [
+  {path: 'auth', 
+    loadComponent: () => import('@pages/auth/auth').then(m => m.Auth)},
     {
     path: '',
-    component: Layout,
+    component: Layout, // tu layout principal con sidebar + router
     children: [
-      { path: 'home', component: Home },
-      { path: 'tracks', component: Tracks },
-      { path: 'favorites', component: Favorites },
-      { path: 'history', component: History }
+      { path: 'home', loadComponent: () => import('@pages/home/home').then(m => m.Home) },
+      { path: 'favorites', loadComponent: () => import('@pages/favorites/favorites').then(m => m.Favorites) },
+      { path: 'tracks', loadComponent: () => import('@pages/tracks/tracks').then(m => m.Tracks) },
+      { path: 'history', loadComponent: () => import('@pages/history/history').then(m => m.History) }
     ]
   }
 ];

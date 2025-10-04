@@ -38,9 +38,8 @@ let edad: number = 20;
 ---
 
 * Agrega fonts y iconos
-
 * Usar dataset para datos tpo json
-de aqui saco la data q usare en la app
+  de aqui saco la data q usare en la app
 
 “compilerOptions”: {
 “resolveJsonModule”: true,
@@ -50,6 +49,7 @@ agregasmos esto para evitar pbugs con los json
 ---
 
 ## Branding
+
 Agregamos los estilos en style.css
 Se usaran variables css para todo el proyecto
 
@@ -74,15 +74,17 @@ Usamos app.ts (antes era app.component.ts)
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-    @Component({
-        selector: 'app-root',
-        imports: [RouterOutlet],
-        templateUrl: './app.html',
-        styleUrl: './app.css'
-    })
+```
+@Component({
+    selector: 'app-root',
+    imports: [RouterOutlet],
+    templateUrl: './app.html',
+    styleUrl: './app.css'
+})
+```
 
 export class App {
-    protected readonly title = signal('Spotify');
+protected readonly title = signal('Spotify');
 }
 
 Segun me explico mi curso el @Component es un decorador q va includo a la Clase,
@@ -118,11 +120,12 @@ app.html = lo que realmente ves en pantalla (el contenedor principal de la app).
 ## Componentes
 
 cree 1 carpeta pages y para cada componente luego tanb los cree
- * ng generate component pages/history --standalone
-ya tanbn cree las rutas con loadComponent
+
+* ng generate component pages/history --standalone
+  ya tanbn cree las rutas con loadComponent
 
 crear componentes de prueba
-ng g c ruta/ejemplo                                                                                            
+ng g c ruta/ejemplo
 
 ng g c pages/home/home-page --standalone --inline-style=false --inline-template=false --flat
 ng g c pages/favorites/favorite-page --standalone --inline-style=false --inline-template=false --flat
@@ -160,8 +163,10 @@ cramos el sidebar, header y  media-player en shared\components
 
 Luego el hace lazyload pero lo haremos como loadComponent y sin modulos, asi:
 
-        path: '',
-        loadComponent: () => import('./pages/home/home').then(m => m.Home)
+```
+path: '',
+    loadComponent: () => import('./pages/home/home').then(m => m.Home)
+```
 
 ---
 
@@ -180,7 +185,38 @@ y cambiamos los import asi
 
 import { Sidebar } from '@core/sidebar/sidebar';  //alias
 
-[20251003_105022_Labo-DW.txt](assets/20251003_105022_Labo-DW.txt)
+Luego en nuestro caso hacemos un componente Layout q tendra el sidebar y mediaplayer, q no cambian y dentro las paginas q cambian
+auth, favorites, home,etc. En el laboratorio lo realiza todo dentro de home
+
+Sobre el css del componente se usan BEM para nombrarlos
+Tanbn se usan variables definidas en el TS y q se recorren con ngfor en html para armar el menu
+queda asi
+
+| Componente / Archivo | Función                                                      |
+| -------------------- | ------------------------------------------------------------ |
+| `layout/`            | Estructura fija (sidebar, media-player, outlet)              |
+| `sidebar/`           | Navegación lateral del usuario                               |
+| `media-player/`      | Controles inferiores (por ahora vacío)                       |
+| `app.routes.ts`      | Define rutas con `Layout` para home y sin `Layout` para auth |
+| `auth/`              | Página de login / acceso (sin sidebar ni player)             |
+
+
+![alt text](image.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Notas Angular (Clone Spotify)
 
