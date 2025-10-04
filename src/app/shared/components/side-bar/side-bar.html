@@ -1,1 +1,34 @@
-<p>side-bar works!</p>
+<nav class="sidebar">
+  <!-- Menú principal -->
+  <ul>
+    <li *ngFor="let opt of mainMenu.defaultOptions">
+      <a [routerLink]="opt.router" routerLinkActive="active">
+        <i class="{{ opt.icon }}"></i>
+        <span>{{ opt.name }}</span>
+      </a>
+    </li>
+  </ul>
+
+  <hr />
+
+  <!-- Accesos rápidos -->
+  <ul>
+    <li *ngFor="let opt of mainMenu.accessLink">
+      <a href="#">
+        <i class="{{ opt.icon }}"></i>
+        <span>{{ opt.name }}</span>
+      </a>
+    </li>
+  </ul>
+
+  <hr />
+
+  <!-- Playlists personalizadas -->
+  <ul>
+    <li *ngFor="let playlist of customOptions">
+      <a [routerLink]="playlist.router">
+        <span>{{ playlist.name }}</span>
+      </a>
+    </li>
+  </ul>
+</nav>
