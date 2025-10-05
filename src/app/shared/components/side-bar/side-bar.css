@@ -4,9 +4,10 @@
     position: fixed;
     top: 0;
     left: 0;
-    padding: 0.5rem 1rem;
+    padding: 0.7rem 1.4rem;
+
     /* padding: [vertical] [horizontal]; */
-    /* background-color: red; */
+    /* background-color: rgb(123, 255, 0); */
 }
 
 .side-bar__list {

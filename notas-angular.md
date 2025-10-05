@@ -205,6 +205,17 @@ queda asi
 
 
 
+| Concepto Angular | Qué hace                          | Dónde lo usaste                  |
+| ---------------- | --------------------------------- | -------------------------------- |
+| `@Component`     | Define un componente              | Todos                            |
+| `@Input()`       | Recibe datos del padre            | `section-generic`, `card-player` |
+| `*ngFor`         | Repite elementos                  | `sidebar`, `section-generic`     |
+| `*ngIf`          | Muestra / oculta contenido        | `media-player` (más adelante)    |
+| `[ngClass]`      | Aplica clases dinámicas           | `sidebar`, `section-generic`     |
+| `RouterOutlet`   | Carga rutas hijas                 | `layout`                         |
+| `loadComponent`  | Carga componente según la ruta    | `app.routes.ts`                  |
+| `OnInit`         | Se ejecuta al crear el componente | `sidebar`, `layout`              |
+| `Layout`         | Estructura base persistente       | `layout.html`                    |
 
 
 
