@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TrackModel } from '@app/core/models/tracks.model';
 
 @Component({
   selector: 'app-media-player',
@@ -10,10 +11,12 @@ import { CommonModule } from '@angular/common';
 })
 export class MediaPlayer implements OnInit {
 
-  mockCover: any = {
+  mockCover: TrackModel = {
     cover: 'https://lastfm.freetls.fastly.net/i/u/300x300/1a1cc9431ffacc1b7be877d61975dfc8.jpg',
-    album: 'Gioly &amp; Assia',
-    name: 'BEBE (Oficial)'
+    album: 'Gioly & Assia',
+    name: 'BEBE (Oficial)',
+    url: 'http://localhost/track.mp3',
+    _id: 1
 }
 
   constructor() { }

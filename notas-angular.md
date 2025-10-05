@@ -204,7 +204,6 @@ queda asi
 ![alt text](image.png)
 
 
-
 | Concepto Angular | Qué hace                          | Dónde lo usaste                  |
 | ---------------- | --------------------------------- | -------------------------------- |
 | `@Component`     | Define un componente              | Todos                            |
@@ -217,32 +216,6 @@ queda asi
 | `OnInit`         | Se ejecuta al crear el componente | `sidebar`, `layout`              |
 | `Layout`         | Estructura base persistente       | `layout.html`                    |
 
-
-
-
-
-
-
-
-
-
-
-
-
-Notas Angular (Clone Spotify)
-
-## Comandos útiles
-
-- `ng serve` → levanta el server en localhost:4200
-- `ng g c componente --standalone` → crea componente standalone
-
-## Conceptos
-
-- **@Input()**: sirve para pasar datos de un componente padre a un hijo.
-- **ngFor**: directiva para recorrer arrays en el template.
-
-## Tips
-
-- Usar `ngClass` para manejar estilos dinámicos.
-- Si quiero usar rutas necesito `--routing` al crear el proyecto.
-
+luego creamos 2 componente mas section-generic y card-player q usaremo en tracks
+y usaremos input para poder mandar variables
+de padre -> hijo, esto es la comunicacion entre componentes
