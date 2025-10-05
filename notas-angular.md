@@ -394,3 +394,97 @@ export const routes: Routes = [
 ng g p shared/pipe/orderList
 CREATE src/app/shared/pipe/order-list-pipe.spec.ts (208 bytes)
 CREATE src/app/shared/pipe/order-list-pipe.ts (235 bytes)
+
+eventos
+
+| Evento                          | Cuándo se dispara                                | Ejemplo                       |
+| ------------------------------- | ------------------------------------------------ | ----------------------------- |
+| `(click)`                       | cuando se hace clic                              | `(click)="playSong()"`        |
+| `(dblclick)`                    | doble clic                                       | `(dblclick)="zoomImage()"`    |
+| `(input)`                       | cada vez que se cambia el valor de un input      | `(input)="onChange($event)"`  |
+| `(change)`                      | cuando un input pierde el foco y su valor cambió | `(change)="onSelect($event)"` |
+| `(submit)`                      | al enviar un formulario                          | `(submit)="onSubmit()"`       |
+| `(mouseenter)` / `(mouseleave)` | al entrar o salir el puntero del mouse           | `(mouseenter)="hover = true"` |
+| `(keydown)` / `(keyup)`         | al presionar o soltar una tecla                  | `(keydown)="onKey($event)"`   |
+| `(focus)` / `(blur)`            | cuando un input gana o pierde el foco            | `(focus)="onFocus()"`         |
+
+
+| Línea                                     | Explicación                                                                                                                                                                              |
+| ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `changSort(property: string): void`       | Declara una función llamada `changSort` que recibe un **texto** (`property`) y no devuelve nada (`void`).<br>Ejemplo: cuando haces `(click)="changSort('name')"` estás pasando `'name'`. |
+| `const {order} = this.optionSort;`        | Usa **desestructuración de objetos** (JS moderno).<br>Extrae la propiedad `order` de `this.optionSort`.<br>Es como si hicieras:<br>`const order = this.optionSort.order;`                |
+| `this.optionSort = { ... }`               | Aquí reasignas el objeto `optionSort` con nuevos valores. Angular detectará el cambio y actualizará la vista.                                                                            |
+| `property,`                               | Esto en JS moderno equivale a `property: property`. Asigna el argumento que le pasaste (`'name'`, `'album'`, etc.) al campo `property` del objeto.                                       |
+| `order: order === 'asc' ? 'desc' : 'asc'` | Aquí está el truco: el **operador ternario**.<br>👉 Si el orden actual es `'asc'`, lo cambia a `'desc'`.<br>👉 Si no, lo cambia a `'asc'`.<br>Es una forma corta de escribir un `if`.    |
+
+
+---
+
+
+🧠 Ejemplo visual de lo que pasa:
+
+Imagina que al iniciar:
+
+optionSort = {property: null, order: 'asc'}
+
+
+👉 Clic en “Nombre”:
+
+changSort('name')
+→ optionSort = {property: 'name', order: 'desc'}
+
+
+👉 Clic otra vez en “Nombre”:
+
+changSort('name')
+→ optionSort = {property: 'name', order: 'asc'}
+
+
+👉 Clic ahora en “Álbum”:
+
+changSort('album')
+→ optionSort = {property: 'album', order: 'desc'}
+
+
+Así Angular sabe qué columna ordenar y en qué dirección — y el pipe (orderList) usa justo esos valores.
+
+🧩 En resumen:
+
+optionSort = estado del orden (qué propiedad y en qué dirección).
+
+changSort() = cambia el estado.
+
+Angular detecta el cambio y el pipe vuelve a ordenar el arreglo automáticamente.
+
+
+
+Angular funciona así:
+
+En el HTML tienes
+
+*ngFor="let track of tracks | orderList:optionSort.property:optionSort.order"
+
+
+👉 Esto le dice a Angular: “pásale la lista de tracks al pipe orderList, junto con esas dos variables”.
+
+Cada vez que optionSort cambia (por el (click) en el encabezado), Angular vuelve a ejecutar el pipe.
+El pipe compara los valores del array y devuelve una nueva versión ordenada.
+
+Angular re-renderiza el DOM automáticamente con ese nuevo array.
+
+Así que sí:
+
+La lógica de ordenación vive en el pipe.
+
+La elección de qué ordenar vive en el componente (con optionSort).
+
+La actualización visual la hace Angular al detectar el cambio. ✅
+
+---
+
+
+## Directivas
+
+ng g d shared/directives/ImgBroken
+CREATE src/app/shared/directives/img-broken.spec.ts (208 bytes)
+CREATE src/app/shared/directives/img-broken.ts (148 bytes)

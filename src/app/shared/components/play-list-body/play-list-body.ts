@@ -14,6 +14,7 @@ import { OrderListPipe } from "../../pipe/order-list-pipe";
 export class PlayListBody implements OnInit {
   tracks: TrackModel[] = [];
   optionSort: {property: string|null, order: string} = {property: null, order: 'asc'};
+  contador: number = 0;
 
   constructor() {}
 
