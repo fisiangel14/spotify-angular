@@ -219,3 +219,178 @@ queda asi
 luego creamos 2 componente mas section-generic y card-player q usaremo en tracks
 y usaremos input para poder mandar variables
 de padre -> hijo, esto es la comunicacion entre componentes
+
+
+Paso 27, creamos interfaces, que define 1 objeto y los campos q debe tener este
+esto con el fin de que ts detecte errores
+la data por el momento viene de un tracks.json, posterior sera de un API
+
+en page de favoritos, usamos lo mismo cramos 2 componentes para el header y body
+usamos lo q sabemos
+HTML + CSS
+Tanbn usamos el json para la data y la interface
+
+usamo algo nuevo, odemos parasar 1 varible al ngtemplate y mandarle datos del ngcontainer
+
+Luego vemos navegacion con Routerlink 
+
+🔥 Perfecto, Angel — acabas de entrar en **una de las partes más potentes de Angular**:
+el enrutamiento dinámico con **`[routerLink]`**.
+Este paso (29) es clave porque conecta tu **sidebar** con las **páginas reales**.
+Vamos a repasarlo bien para que te quede clarísimo 👇
+
+---
+
+## 🧭 1. Qué hace `[routerLink]`
+
+La directiva `[routerLink]` **reemplaza los `<a href="">` tradicionales**,
+pero **sin recargar la página completa** — solo cambia el componente que se muestra dentro del `<router-outlet>`.
+
+Por ejemplo:
+
+```html
+<li *ngFor="let item of mainMenu.defaultOptions">
+  <div class="list-wrapper-item" [routerLink]="item.router">
+    <i [ngClass]="['uil', item.icon]"></i>
+    <span class="side-bar__list list-label">{{item.name}}</span>
+  </div>
+</li>
+```
+
+➡️ Cada `item.router` es un **array o string** con la ruta configurada en tu `app.routes.ts`.
+Cuando haces clic, Angular **renderiza el componente correspondiente** dentro del `<router-outlet>` del layout,
+sin hacer una nueva petición HTTP al servidor.
+
+---
+
+## 🧩 2. Qué cambió en tu sidebar.ts
+
+Agregaste algo como esto:
+
+```ts
+mainMenu = {
+  defaultOptions: [
+    {
+      name: 'Home',
+      icon: 'uil uil-estate',
+      router: ['/tracks']
+    },
+    {
+      name: 'Buscar',
+      icon: 'uil uil-search',
+      router: ['/history']
+    },
+    {
+      name: 'Tu biblioteca',
+      icon: 'uil uil-chart',
+      router: ['/favorites']
+    }
+  ],
+  accessLink: [
+    { name: 'Crear playlist', icon: 'uil uil-plus' },
+    { name: 'Canciones que te gustan', icon: 'uil uil-heart' }
+  ]
+};
+```
+
+✔️ Cada `router` apunta a una ruta real
+✔️ Así conectas tu **Sidebar** → con las **Pages (`TracksPage`, `FavoritesPage`, etc.)**
+
+---
+
+## 🧠 3. Qué hace `RouterLink`
+
+* Se comunica con el **Router interno de Angular**
+* Cambia la URL sin recargar
+* Le dice al `<router-outlet>` qué componente debe mostrar
+
+---
+
+## 🧩 4. Asegúrate de importar `RouterLink` (solo una vez por componente)
+
+En tu `sidebar.ts`:
+
+```ts
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
+
+@Component({
+  selector: 'app-side-bar',
+  standalone: true,
+  imports: [CommonModule, RouterLink],
+  templateUrl: './side-bar.html',
+  styleUrl: './side-bar.css',
+})
+export class SideBar { ... }
+```
+
+Sin eso, te saldría el clásico error:
+
+> “Can’t bind to ‘routerLink’ since it isn’t a known property…”
+
+---
+
+## 🧱 5. En tu layout
+
+Asegúrate que tu `<router-outlet>` esté en el layout:
+
+```html
+<div class="layout">
+  <app-side-bar></app-side-bar>
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+  <app-media-player></app-media-player>
+</div>
+```
+
+Así cuando haces clic en “Home”, “Buscar”, “Favoritos”…
+se reemplaza solo la parte dentro del `<router-outlet>` 🎯
+
+---
+
+## 🧩 6. Verifica tus rutas (`app.routes.ts`)
+
+Debe lucir más o menos así:
+
+```ts
+import { Routes } from '@angular/router';
+import { Layout } from './layout/layout';
+import { TracksPage } from './pages/tracks/tracks-page';
+import { FavoritesPage } from './pages/favorites/favorite-page';
+import { HistoryPage } from './pages/history/history-page';
+
+export const routes: Routes = [
+  {
+    path: '',
+    component: Layout,
+    children: [
+      { path: '', redirectTo: 'tracks', pathMatch: 'full' },
+      { path: 'tracks', component: TracksPage },
+      { path: 'favorites', component: FavoritesPage },
+      { path: 'history', component: HistoryPage }
+    ]
+  }
+];
+```
+
+---
+
+## ✅ En resumen
+
+| Elemento          | Función                                 |
+| ----------------- | --------------------------------------- |
+| `[routerLink]`    | Cambia la vista sin recargar            |
+| `RouterLink`      | Directiva que maneja navegación         |
+| `<router-outlet>` | Muestra el componente activo            |
+| `routes.ts`       | Define qué componente carga cada ruta   |
+| `Layout`          | Permite mantener sidebar y player fijos |
+
+---
+
+## Pipe
+
+ng g p shared/pipe/orderList
+CREATE src/app/shared/pipe/order-list-pipe.spec.ts (208 bytes)
+CREATE src/app/shared/pipe/order-list-pipe.ts (235 bytes)
