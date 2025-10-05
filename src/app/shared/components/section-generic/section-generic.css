@@ -2,6 +2,14 @@
     margin-bottom: 2rem;
 }
 
+/* .section--generic__title {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: green;
+} */
+
+
 .section--generic__player--zone .player--list {
     display: grid;
     list-style: none;
