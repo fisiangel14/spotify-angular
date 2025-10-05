@@ -554,3 +554,313 @@ o interceptar eventos globales del teclado.
 
 ---
 
+## Formulario Reactivos
+
+🎯 ¡Excelente resumen!
+Estás entendiendo **muy bien** cómo funcionan los **formularios reactivos** en Angular.
+Vamos a explicarlo despacio, para que veas **cómo encaja cada pieza** y cuándo se ejecuta cada parte.
+
+---
+
+## 🧠 1️⃣ Qué es un Formulario Reactivo
+
+En Angular hay **dos formas** de manejar formularios:
+
+* **Template-driven** → más simple, con directivas en el HTML (como en AngularJS).
+* **Reactive Forms** → más potente, la lógica del formulario vive en el **TypeScript** y se vincula (bind) al HTML.
+
+👉 En el laboratorio estás usando la segunda: **Formularios Reactivos**, que se basan en:
+
+* **FormGroup** → el formulario entero (agrupa los campos)
+* **FormControl** → cada campo individual
+* **Validators** → reglas para los campos
+
+---
+
+## ⚙️ 2️⃣ Flujo completo de tu formulario
+
+### 🧩 En tu `login-page.ts`
+
+```ts
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-login-page',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: './login-page.html',
+  styleUrl: './login-page.css'
+})
+export class LoginPage implements OnInit {
+
+  formLogin: FormGroup = new FormGroup({});
+
+  ngOnInit(): void {
+    this.formLogin = new FormGroup({
+      email: new FormControl('', [
+        Validators.required,
+        Validators.email
+      ]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(12)
+      ])
+    });
+  }
+
+  sendLogin(): void {
+    if (this.formLogin.valid) {
+      console.log('Datos del formulario:', this.formLogin.value);
+    } else {
+      console.log('Formulario inválido');
+    }
+  }
+}
+```
+
+---
+
+### 💻 En tu `login-page.html`
+
+```html
+<form [formGroup]="formLogin" (ngSubmit)="sendLogin()" class="login-auth-form">
+  <input
+    formControlName="email"
+    type="text"
+    placeholder="Correo o usuario"
+    class="form-input"
+    [class.error]="formLogin.get('email')?.invalid && formLogin.get('email')?.touched"
+    [class.success]="formLogin.get('email')?.valid"
+  />
+
+  <input
+    formControlName="password"
+    type="password"
+    placeholder="Contraseña"
+    class="form-input"
+    [class.error]="formLogin.get('password')?.invalid && formLogin.get('password')?.touched"
+    [class.success]="formLogin.get('password')?.valid"
+  />
+
+  <button type="submit" [disabled]="formLogin.invalid">
+    Iniciar sesión
+  </button>
+</form>
+```
+
+---
+
+### 🎨 En tu `login-page.css`
+
+```css
+.login-auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 350px;
+  margin: 4rem auto;
+}
+
+.form-input {
+  padding: 0.75rem;
+  border: 2px solid #444;
+  border-radius: 6px;
+  background: #1e1e1e;
+  color: white;
+}
+
+.form-input.error {
+  border-color: #e74c3c;
+}
+
+.form-input.success {
+  border-color: #2ecc71;
+}
+
+button {
+  padding: 0.75rem;
+  border: none;
+  background: #1db954;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
+```
+
+---
+
+## 🧩 3️⃣ Cuándo se activan los estilos de error o éxito
+
+* `.error` aparece cuando:
+
+  ```ts
+  formLogin.get('email')?.invalid && formLogin.get('email')?.touched
+  ```
+
+  Es decir: el campo **es inválido y el usuario ya lo tocó**.
+
+* `.success` aparece cuando:
+
+  ```ts
+  formLogin.get('email')?.valid
+  ```
+
+  Es decir: el campo **cumple las reglas** del validador.
+
+👉 Así, los estilos cambian automáticamente según el estado **reactivo** del formulario.
+
+---
+
+## 🚦 4️⃣ Qué pasa al presionar “Iniciar sesión”
+
+Cuando das clic al botón:
+
+1. Angular evalúa los `Validators`.
+2. Si el formulario **no es válido**, el botón está `disabled`.
+3. Si es válido, ejecuta el método `(ngSubmit)="sendLogin()"`.
+4. En `sendLogin()` tú puedes:
+
+   * Mostrar mensajes de error.
+   * Enviar los datos a una API.
+   * Limpiar el formulario, etc.
+
+---
+
+¿Quieres que te muestre el **paso siguiente del lab (validaciones visuales)** con los mensajes tipo
+“Correo inválido” o “Contraseña muy corta”?
+Así completamos la parte 2 del paso 32.
+
+
+
+
+.login-auth-page {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-4);
+    color: var(--color-3);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
+
+.login-auth-page .login-auth-wrapper {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-auth-page .login-social-zone {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    width: 100%;
+}
+
+.login-auth-page .social-btn {
+    border: 0;
+    padding: .5rem 2rem;
+    width: 100%;
+    font-size: var(--font-size-2);
+    border-radius: var(--border-radius-2);
+    box-shadow: var(--shadow-1);
+    border: solid 1px var(--color-4);
+    background-color: var(--color-4);
+    font-weight: 600;
+}
+
+.login-auth-page .login-social-zone .social-btn.btn-fb {
+    background-color: #3A61B3;
+    color: var(--color-4);
+}
+
+.login-auth-page .login-social-zone .social-btn.btn-apple {
+    background-color: #1a1a1a;
+    color: var(--color-4);
+}
+
+.login-auth-page .separator {
+    width: 100%;
+    margin: 2rem 0;
+    border-bottom: solid 1px var(--color-2);
+    opacity: .2;
+}
+
+.login-auth-page .login-auth-form {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.login-auth-page .login-auth-form .form-group {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.login-auth-page .login-auth-form .form-group input {
+    border: solid 1px #e7e7e7;
+    border-radius: var(--border-radius-1);
+    height: 30px;
+    padding: .25rem .5rem;
+    font-size: 90%;
+}
+
+.login-auth-page .login-auth-form label {
+    padding-bottom: .35rem;
+    font-weight: 600;
+    display: inline-block;
+    margin: 0;
+}
+
+.login-auth-page .login-auth-form .form-steps {
+    padding: .5rem 0;
+}
+
+.login-auth-page .login-auth-form .form-steps .link {
+    color: var(--color-2);
+    font-size: 85%;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.login-auth-page .login-auth-form .form-steps .link:hover {
+    color: var(--color-1);
+}
+
+.login-auth-page .login-auth-form .form-action .login {
+    color: var(--color-4);
+    margin: 1rem 0;
+    background-color: var(--color-1);
+}
+
+input.ng-invalid.ng-touched {
+    border: solid 2px red !important
+}
+
+input.ng-valid.ng-touched {
+    border: solid 2px rgb(21, 255, 0) !important
+}
+
+---
+
+## Servicios
+
+ng g s pages/auth/services/Auth
+CREATE src/app/pages/auth/services/auth.spec.ts (327 bytes)
+CREATE src/app/pages/auth/services/auth.ts (116 bytes)

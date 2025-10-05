@@ -1,3 +1,4 @@
+import { Auth } from '@pages/auth/services/auth';
 import { Component,OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -13,7 +14,7 @@ export class LoginPage implements OnInit {
 
   formLogin: FormGroup = new FormGroup({});
 
-  constructor() { }
+  constructor( private auth: Auth) { }
 
   ngOnInit(): void {
     // Initialize form controls here
@@ -31,7 +32,9 @@ export class LoginPage implements OnInit {
   }
 
   sendLogin(): void{
-    const body = this.formLogin.value;  
+    const {email, password} = this.formLogin.value;
+    this.auth.sendCredentials(email, password);
+    // const body = this.formLogin.value;  
   // El FormGroup y FormControl deben ser declarados en el Login-page.ts:
   };
 
