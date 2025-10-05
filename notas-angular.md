@@ -488,3 +488,69 @@ La actualización visual la hace Angular al detectar el cambio. ✅
 ng g d shared/directives/ImgBroken
 CREATE src/app/shared/directives/img-broken.spec.ts (208 bytes)
 CREATE src/app/shared/directives/img-broken.ts (148 bytes)
+
+
+Excelente pregunta 👏 — y ojo: **no exactamente**.
+La directiva que tú acabas de crear (*`appImgBroken`*) **sirve para ese caso concreto** (cuando una imagen no carga),
+pero **las directivas en Angular son mucho más poderosas y generales**.
+
+Déjame explicártelo clarito 👇
+
+---
+
+### 🧱 ¿Qué es una directiva en Angular?
+
+Una **directiva** es una “instrucción” que **le agrega comportamiento o apariencia adicional a un elemento HTML**
+sin tener que crear un componente nuevo.
+
+Piensa que un **componente** = HTML + lógica + estilo
+mientras que una **directiva** = solo **lógica**, sin plantilla.
+
+---
+
+### 🧩 Tipos de directivas
+
+#### 1️⃣ **Estructurales**
+
+Cambian la estructura del DOM (agregan o quitan elementos del HTML).
+Ejemplos clásicos:
+
+* `*ngIf` → muestra u oculta algo
+* `*ngFor` → repite un elemento
+* `*ngSwitch` → muestra una de varias opciones
+
+> Estas usan el `*` porque modifican directamente el DOM (estructuralmente).
+
+---
+
+#### 2️⃣ **De atributo**
+
+Modifican **la apariencia o el comportamiento** de un elemento que ya existe.
+Tu directiva `appImgBroken` es de este tipo 💪
+
+Otros ejemplos:
+
+* `[ngClass]` → cambia clases CSS dinámicamente
+* `[ngStyle]` → aplica estilos dinámicos
+* `[routerLink]` → convierte un `<a>` normal en un enlace de Angular
+* Tu `[appImgBroken]` → detecta errores en `<img>` y reemplaza la fuente
+
+---
+
+### 💡 En resumen
+
+| Tipo de directiva | Ejemplo                       | Qué hace                                                                |
+| ----------------- | ----------------------------- | ----------------------------------------------------------------------- |
+| Estructural       | `*ngIf`, `*ngFor`             | Añade o quita elementos del DOM                                         |
+| De atributo       | `[ngClass]`, `[appImgBroken]` | Modifica o extiende el comportamiento o estilo de un elemento existente |
+
+---
+
+👉 Así que tu caso (imagen rota) es **una aplicación práctica de una directiva de atributo**,
+pero podrías crear directivas para *casi cualquier cosa*:
+por ejemplo, detectar cuando un botón hace doble clic,
+cambiar el color del texto al pasar el mouse,
+o interceptar eventos globales del teclado.
+
+---
+
