@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { Track } from '@app/pages/tracks/services/track';
 
 @Component({
   selector: 'app-side-bar',
@@ -11,7 +12,9 @@ import { RouterLink } from '@angular/router';
 })
 export class SideBar implements OnInit {
 
-  mainMenu: {
+  constructor(private router: Router ,private trackService: Track) { }
+
+  mainMenu: { 
     defaultOptions: Array<any>;
     accessLink: Array<any>;
   } = { defaultOptions: [], accessLink: [] };
@@ -36,6 +39,13 @@ export class SideBar implements OnInit {
       { name: 'Mi lista °3', router: ['/'] },
       { name: 'Mi lista °4', router: ['/']}
     ];
+
+    this.trackService.dataTracksRandom$.subscribe((response:any) => {
+      this.customOptions.push({
+        name: response[0].name,
+        router: []
+      })
+    });
 
   }
 }

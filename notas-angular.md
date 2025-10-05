@@ -864,3 +864,13 @@ input.ng-valid.ng-touched {
 ng g s pages/auth/services/Auth
 CREATE src/app/pages/auth/services/auth.spec.ts (327 bytes)
 CREATE src/app/pages/auth/services/auth.ts (116 bytes)
+
+---
+
+## Introducción al RXJS, Programación reactiva
+
+verificamos q la app corre bien
+
+ng g s pages/tracks/services/Track
+CREATE src/app/pages/tracks/services/track.spec.ts (332 bytes)
+CREATE src/app/pages/tracks/services/track.ts (117 bytes)

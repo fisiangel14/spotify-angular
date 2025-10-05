@@ -31,6 +31,9 @@ export class MediaPlayer implements OnInit, OnDestroy {
     const observer1$: Subscription = this.multimedia.callback.subscribe(
       (response: TrackModel) => {
         console.log('Recibiendo canción en el reproductor', response);
+        if(response){
+          this.mockCover = response;
+        }
       }
     );
     this.listObserver$ = [observer1$];
