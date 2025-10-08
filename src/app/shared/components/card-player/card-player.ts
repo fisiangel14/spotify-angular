@@ -15,14 +15,14 @@ export class CardPlayer implements OnInit {
   @Input() mode: 'small' | 'big' = 'small';
   @Input() track: TrackModel = {_id: 0, name: '', album: '', cover: '', url: ''};
 
-  constructor(private multimedia: Multimedia) { }
+  constructor(private multimediaService: Multimedia) { }
 
   ngOnInit(): void {
       
   }
 
   sendPlay(track: TrackModel): void{
-    console.log('Enviando  canción al repoductor', track);
-    this.multimedia.callback.emit(track);
+    console.log('Enviando  canción al media-player', track);
+    this.multimediaService.callback.emit(track);
   }
 }

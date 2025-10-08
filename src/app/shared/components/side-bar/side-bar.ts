@@ -24,7 +24,7 @@ export class SideBar implements OnInit {
   ngOnInit(): void {
     this.mainMenu.defaultOptions = [
       { name: 'Home', icon: 'uil uil-estate', router: ['/', 'auth'] },
-      { name: 'Buscar', icon: 'uil uil-search', router: ['/', 'history'] },
+      { name: 'Buscar', icon: 'uil uil-search', router: ['/', 'tracks'] },
       { name: 'Tu biblioteca', icon: 'uil uil-chart', router: ['/','favorites'], query:{ hola: 'mundo'} }
     ];
 
