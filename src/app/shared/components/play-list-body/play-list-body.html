@@ -30,9 +30,9 @@
 <ng-template #coverSection let-track="track">
 
     <div class="cover-section">
-        <img appImgBroken class="cover-track" [src]="track.cover" [alt]="track.name">
+        <img (click)="sendPlay(track)" appImgBroken class="cover-track" [src]="track.cover" [alt]="track.name">
         <div class="cover-info">
-            <div class="name-track">{{track.name}}</div>
+            <div (click)="sendPlay(track)" class="name-track">{{track.name}}</div>
             <div class="name-track-details">{{track.artist.name}}</div>
         </div>
     </div>

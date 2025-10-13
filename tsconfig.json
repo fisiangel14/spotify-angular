@@ -21,6 +21,7 @@
     // 👇 Y esta línea es necesaria para que Angular resuelva tus paths
     "baseUrl": "./",
     "paths": {
+      "@environments/*": ["src/environments/*"],
       "@app/*": ["src/app/*"],
       "@core/*": [
         "src/app/core/*"

@@ -1,3 +1,4 @@
+import { Multimedia } from './../../services/multimedia';
 import { TrackModel } from '@app/core/models/tracks.model';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -16,7 +17,7 @@ export class PlayListBody implements OnInit {
   optionSort: {property: string|null, order: string} = {property: null, order: 'asc'};
   contador: number = 0;
 
-  constructor() {}
+  constructor(private multimediaService: Multimedia) {}
 
   ngOnInit(): void {
     const { data }: any = (dataRaw as any).default;
@@ -28,6 +29,11 @@ export class PlayListBody implements OnInit {
     this.optionSort = {
       property, 
       order: order === 'asc' ? 'desc' : 'asc'};
+  }
+
+  sendPlay(track: TrackModel): void{
+    console.log('Enviando  canción al media-player', track);
+    this.multimediaService.callback.emit(track);
   }
 
 }

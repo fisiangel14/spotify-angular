@@ -874,3 +874,9 @@ verificamos q la app corre bien
 ng g s pages/tracks/services/Track
 CREATE src/app/pages/tracks/services/track.spec.ts (332 bytes)
 CREATE src/app/pages/tracks/services/track.ts (117 bytes)
+
+---
+
+step 35
+Quitammos el servicio para el sidebar
+elimimamos la supcrpcion al servicio de task de ahi trai la data del file ahora sale en blanco

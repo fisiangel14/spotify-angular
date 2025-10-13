@@ -1,30 +1,24 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TrackModel } from '@app/core/models/tracks.model';
 import { Observable, of } from 'rxjs';
-import * as dataRaw from '../../../data/tracks.json';
+import { environment } from '@environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class Track {
 
-  dataTracksTrending$: Observable<TrackModel[]> = of([]);
-  dataTracksRandom$: Observable<any> = of([]);
+  // dataTracksTrending$: Observable<TrackModel[]> = of([]);
+  // dataTracksRandom$: Observable<any> = of([]);
 
-  constructor() {
-    const {data}: any = (dataRaw as any).default;
-    this.dataTracksTrending$ = of(data);
-    this.dataTracksRandom$ = new Observable( observer => {
-      const trackExample: TrackModel = {
-        _id: 9,
-        name: 'Level',
-        album: 'Cartel de Santa',
-        url: 'http://',
-        cover: 'https://i.scdn.co/image/ab6761610000e5ebbd172041a059e4b6e46e2cfc'
-      }
-      setTimeout(() => {
-        observer.next( [trackExample] )},2500);
-      })
-    }
+  private readonly URL = environment.api // definimos la variable privada URL y vemos que hace un import debe ser el de desarrollo.
+
+  constructor(private httpClient: HttpClient) {
+  }
+
+  getAllTracks$(): Observable<any> {
+    return this.httpClient.get(`${this.URL}/tracks`) // ojo aqui se usa comilla invertida que permite concatenar
+  }
   
 }
