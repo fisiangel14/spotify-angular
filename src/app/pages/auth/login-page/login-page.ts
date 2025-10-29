@@ -3,6 +3,7 @@ import { Component,OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login-page',
@@ -14,10 +15,11 @@ import { Router } from '@angular/router';
 export class LoginPage implements OnInit {
 
   formLogin: FormGroup = new FormGroup({});
+  errorSession: boolean = false;
   // router: any;
   // router: any;
 
-  constructor(private router: Router, private auth: Auth) { }
+  constructor(private router: Router, private authService: Auth, private cookie: CookieService) { }
 
   ngOnInit(): void {
     // Initialize form controls here
@@ -36,10 +38,20 @@ export class LoginPage implements OnInit {
 
   sendLogin(): void{
     const {email, password} = this.formLogin.value;
-    this.auth.sendCredentials(email, password);
+    this.authService.sendCredentials(email, password)
     // const body = this.formLogin.value;  
   // El FormGroup y FormControl deben ser declarados en el Login-page.ts:
-    this.router.navigate(['/tracks']);
+    // this.router.navigate(['/tracks']);
+    // TODO 200<400
+    .subscribe(responseOK => {
+      console.log('Sesion iniciada correcta',responseOK);
+      const {tokenSession, data} = responseOK;
+      this.cookie.set('token', tokenSession, 4, '/'); // 1 día de expiración
+    },err=>{
+      this.errorSession = true;
+      console.log('Ocurrio error en email o password&#39');
+    })  
+  
   };
 
   // enviar() {
