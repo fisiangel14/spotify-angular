@@ -17,13 +17,13 @@ export class Auth {
     const body = { 
       email, password 
     };
-    return this.httpClient.post(`${this.URL}/auth/login`, body)
-    //   pipe(
-    //     tap((responseOK: any) => {
-    //       const { tokenSession, data } = responseOK;
-    //         this.cookie.set('token_service', tokenSession, 4, '/'); // 1 día de expiración
-    //     })
-    // );
+    return this.httpClient.post(`${this.URL}/auth/login`, body).
+      pipe(
+        tap((responseOK: any) => {
+          const { tokenSession, data } = responseOK;
+            this.cookie.set('token_service', tokenSession, 4, '/'); // 1 día de expiración
+        })
+    );
     ;
   }
 }
